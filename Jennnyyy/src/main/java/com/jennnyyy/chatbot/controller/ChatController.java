@@ -13,8 +13,9 @@ public class ChatController {
     private ChatService chatService;
 
     @GetMapping("/chat")
-    public String chat(@RequestParam String message) {
-        return chatService.chat(message);
+    public String chat(@RequestParam String message,
+                       @RequestParam(required = false, defaultValue = "general") String category) {
+        return chatService.chat(message, category);
     }
 
     @GetMapping("/chat/random")
